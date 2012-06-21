@@ -1,11 +1,13 @@
+#!/usr/bin/env rake
+require 'bundler/gem_tasks'
+
+=begin
 require 'rake/clean'
 require 'rubygems'
-require 'rake/gempackagetask'
-#require 'rubygems/package_task'  # MO
-require 'rake/rdoctask'
-#require 'rdoc/task'  # MO
-
-# ? require 'bundler/gemtasks'
+#require 'rake/gempackagetask'
+require 'rubygems/package_task'  # MO
+#require 'rake/rdoctask'
+require 'rdoc/task'  # MO
 
 Rake::RDocTask.new do |rd|
   rd.main = "README.rdoc"
@@ -25,10 +27,10 @@ end
 #  rdoc.rdoc_files.include('lib/**/*.rb')
 #end
 
-spec = eval(File.read('powercsv.gemspec'))
+spec = eval(File.read('fluent-plugin-powermta.gemspec'))
 
-Rake::GemPackageTask.new(spec) do |pkg|
-end
+#Rake::GemPackageTask.new(spec) do |pkg|
+#end
 
 require 'rake/testtask'
 Rake::TestTask.new do |t|
@@ -45,3 +47,4 @@ task :default => [:compile, :test]
 # MO: add compile task provided by rake-compiler gem
 require 'rake/extensiontask'
 Rake::ExtensionTask.new('csv_parser')
+=end

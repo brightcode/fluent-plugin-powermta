@@ -1,38 +1,20 @@
-# Ensure we require the local version and not one we might have installed already
-require File.join([File.dirname(__FILE__), 'lib/fluent-plugin-powermta', 'version.rb'])
+# -*- encoding: utf-8 -*-
+require File.expand_path('../lib/fluent-plugin-powermta/version', __FILE__)
 
-# $:.push File.expand_path("../lib", __FILE__)
-# require "fluent-plugin-powermta/version"
+Gem::Specification.new do |gem|
+  gem.authors       = ["Maarten Oelering"]
+  gem.email         = ["maarten@brightcode.nl"]
+  gem.description   = %q{Fluent input plugin for PowerMTA accounting logs}
+  gem.summary       = %q{Fluent input plugin for PowerMTA accounting logs}
+  gem.homepage      = "https://github.com/brightcode/fluent-plugin-powermta"
 
-spec = Gem::Specification.new do |s| 
-  s.name = 'fluent-plugin-powermta'
-  s.version = Fluent::Plugin::PowerMTA::VERSION
-  s.author = 'Maarte Oelering'
-  s.email = 'maarten@brightcode.nl'
-  s.homepage = 'http://github.com/brightcode'
-  s.description = 'PowerMTA CSV processing'
-  s.platform = Gem::Platform::RUBY
-  s.summary = 'PowerMTA CSV processing'
+  gem.files         = `git ls-files`.split($\)
+  #gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  #gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
+  gem.name          = "fluent-plugin-powermta"
+  gem.require_paths = ["lib"]
+  gem.version       = Fluent::Plugin::PowerMTA::VERSION
 
-# Add your other files here if you make them
-  #s.files  = ['README.rdoc', 'Rakefile', 'powercsv.gemspec', 'powercsv.rdoc']
-  #s.files += ['lib/powercsv.rb'] + Dir['lib/powercsv/**/*.rb']
-  #s.files += Dir['ext/**/extconf.rb'] + Dir['ext/**/*.h'] + Dir['ext/**/*.c']
-  #s.files += Dir['bin/pcsv']
-  s.files         = `git ls-files`.split("\n")
-
-  s.require_paths = ['lib']
-
-  s.extensions = ['ext/csv_parser/extconf.rb']
-  
-  #s.has_rdoc = true
-  #s.extra_rdoc_files = ['README.rdoc','powercsv.rdoc']
-  #s.rdoc_options << '--title' << 'powercsv' << '--main' << 'README.rdoc'
-
-  #s.bindir = 'bin'
-  #s.executables << 'pcsv'
-  #s.rubyforge_project = 'powercsv'
-  s.add_development_dependency('rake')
-  s.add_development_dependency('rake-compiler')
-  s.add_development_dependency('rdoc')
+  gem.extensions    = ['ext/csv_parser/extconf.rb']
 end
+
